@@ -1138,7 +1138,7 @@ function renderRound3() {
     const cQ = shuffleArray([...r3CQuestions])[0];
     const cppQ = shuffleArray([...r3CppQuestions])[0];
     
-    GAME_STATE.activeQuestions = [javaQ, htmlQ, cQ, cppQ];
+    GAME_STATE.activeQuestions = shuffleArray([javaQ, htmlQ, cQ, cppQ]);
     GAME_STATE.currentQuestionIdx = 0;
     GAME_STATE.attempts = 0;
     GAME_STATE.accScore = 0;
