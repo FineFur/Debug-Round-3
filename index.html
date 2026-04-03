@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCOE Debugging the Challenge - Round 3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="particles-background"></div>
+    <div class="overlay-grid"></div>
+
+    <header id="top-bar" class="hidden">
+        <div class="header-left">
+            <span class="glitch-text" data-text="DEBUG_CHALLENGE">DEBUGGING CHALLENGE</span>
+        </div>
+        <div class="header-center">
+            <div id="round-indicator">ROUND 3 HIDDEN BUG HUNT</div>
+        </div>
+        <div class="header-right">
+            <div id="timer-display">10:00</div>
+        </div>
+    </header>
+
+    <main id="app-container">
+        <!-- Content will be injected here dynamically -->
+    </main>
+
+    <div id="fullscreen-lockout" class="fullscreen-overlay d-none" style="z-index: 10006;">
+        <div class="panel" style="max-width: 600px; width: 100%; text-align: center;">
+            <h2 style="color: var(--error); margin-bottom: 0.5rem;">[ SECURITY_ALERT_01 ]</h2>
+            <h3 style="color: var(--accent); margin-bottom: 2rem;">FULLSCREEN MODE REQUIRED</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2.5rem; color: var(--text-primary); line-height: 1.6;">
+                The system has detected a breach of the security protocol.
+                Full monitoring is required to continue the session.
+                <br><br>
+                <span style="color: var(--error); font-weight: bold;">[ WARNING ]</span> The timer is still counting
+                down.
+            </p>
+            <button class="btn btn-primary" onclick="reEnterFullscreen()">RESTORE_SECURITY_PROTOCOL</button>
+        </div>
+    </div>
+
+    <div id="custom-alert" class="fullscreen-overlay d-none" style="z-index: 10005;">
+        <div class="panel" style="max-width: 500px; width: 100%; text-align: center;">
+            <p id="custom-alert-message"
+                style="font-size: 1.2rem; margin-bottom: 2rem; white-space: pre-wrap; color: var(--text-primary);"></p>
+            <button class="btn btn-primary" onclick="closeCustomAlert()">OK</button>
+        </div>
+    </div>
+
+    <script src="round3.js"></script>
+</body>
+
+</html>

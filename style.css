@@ -1,0 +1,316 @@
+:root {
+    --bg-color: #050510;
+    --panel-bg: rgba(16, 16, 32, 0.7);
+    --border-color: rgba(0, 243, 255, 0.3);
+    --accent: #00f3ff;
+    --accent-glow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
+    --text-primary: #e0e0e0;
+    --text-muted: #8888a0;
+    --error: #ff3366;
+    --success: #00ff66;
+    --font-mono: 'Consolas', 'Courier New', monospace;
+    --font-sans: system-ui, -apple-system, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+input,
+textarea {
+    user-select: auto;
+    -webkit-user-select: auto;
+}
+
+/* Background Effects */
+.overlay-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--panel-bg);
+    border-bottom: 1px solid var(--border-color);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+header.hidden {
+    transform: translateY(-100%);
+    position: absolute;
+    width: 100%;
+}
+
+.header-left {
+    flex: 1;
+}
+
+.header-left .glitch-text {
+    font-family: var(--font-mono);
+    font-weight: bold;
+    color: var(--accent);
+    letter-spacing: 2px;
+}
+
+.header-center {
+    flex: 0;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: 800;
+    font-size: 1.2rem;
+    letter-spacing: 4px;
+    color: var(--text-primary);
+}
+
+.header-right {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2rem;
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+}
+
+#timer-display {
+    color: var(--accent);
+    text-shadow: var(--accent-glow);
+    font-weight: bold;
+}
+
+/* Main Container */
+#app-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
+}
+
+/* Panels/Cards */
+.panel {
+    background: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 800px;
+    width: 100%;
+    animation: fadeInScale 0.4s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.screen-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+}
+
+.screen-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Buttons */
+.btn {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    display: inline-block;
+    outline: none;
+}
+
+.btn:hover {
+    background: var(--accent);
+    color: #000;
+    box-shadow: var(--accent-glow);
+}
+
+.btn-primary {
+    background: rgba(0, 243, 255, 0.1);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Form inputs */
+input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-family: var(--font-mono);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    transition: border-color 0.2s;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+/* Code area */
+.code-block {
+    background: #0d0d1a;
+    padding: 1.5rem;
+    border-radius: 6px;
+    border: 1px solid #333;
+    font-family: var(--font-mono);
+    font-size: 1rem;
+    white-space: pre-wrap;
+    overflow-x: auto;
+    margin-bottom: 1.5rem;
+    color: #d4d4d4;
+}
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Fullscreen & Modals */
+.d-none {
+    display: none !important;
+}
+
+.fullscreen-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.password-input {
+    width: 100%;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    color: #fff;
+    font-family: var(--font-mono);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    transition: border-color 0.2s;
+}
+
+.password-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+/* Round 3 Specific */
+.round3-editor {
+    width: 100%;
+    min-height: 320px;
+    background: #0d0d1a;
+    color: #d4d4d4;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    resize: none;
+    line-height: 1.6;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.round3-editor:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.1);
+}
