@@ -140,8 +140,8 @@ public class ShoppingCart {
         checks: [
             { desc: "Exception inheritance (extends Exception)", pass: (c) => /class\s+InvalidQuantityException\s+extends\s+Exception/.test(c) },
             { desc: "New keyword when throwing exception", pass: (c) => /throw\s+new\s+InvalidQuantityException/.test(c) },
-            { desc: "Type mismatch (double discount)", pass: (c) => /double\s+discount\s*=\s*0\.0/.test(c) },
-            { desc: "Switch break for GOLD tier", pass: (c) => /case\s+"GOLD":[\s\S]*discount\s*=\s*20\s*;\s*break\s*;/.test(c) },
+            { desc: "Type mismatch (double discount)", pass: (c) => /double\s+discount\s*=\s*0(\.0)?/.test(c) },
+            { desc: "Switch break for GOLD tier", pass: (c) => /case\s+"GOLD"\s*:[\s\S]*?discount\s*=\s*20(\.0)?\s*;\s*break\s*;/.test(c) },
             { desc: "Do-while syntax (semicolon at end)", pass: (c) => /while\s*\(\s*items\s*>\s*0\s*\)\s*;/.test(c) }
         ]
     },
@@ -305,7 +305,7 @@ public class SmartHome {
         checks: [
             { desc: "Infinite loop / early break fix (use continue)", pass: (c) => /continue\s*;/.test(c) && !/break\s*;/.test(c) },
             { desc: "Correct substring indices (5, 10)", pass: (c) => /text\.substring\s*\(\s*5\s*,\s*10\s*\)/.test(c) },
-            { desc: "Unreachable code fix (move throw e)", pass: (c) => /System\.out\.println\("Continuing[\s\S]*throw\s+e\s*;/.test(c) },
+            { desc: "Unreachable code fix (move/remove print)", pass: (c) => !/throw\s+e\s*;\s*System\.out\.println/.test(c) },
             { desc: "Null protection for substring", pass: (c) => /if\s*\(\s*text\s*!=\s*null\s*\)\s*\{[\s\S]*substring/.test(c) },
             { desc: "Exception rethrowing (throws Exception signature)", pass: (c) => /void\s+processText\s*\(.*?\)\s+throws\s+Exception/.test(c) || /throw\s+new\s+RuntimeException/.test(c) }
         ]
@@ -450,7 +450,7 @@ const r3HtmlQuestions = [
 </html>`,
         checks: [
             { desc: "Start button call syntax (startTimer())", pass: (c) => /onclick\s*=\s*['"]startTimer\(\)['"]/.test(c) },
-            { desc: "Global timerInterval scope", pass: (c) => /let\s+timerInterval\s*;[\s\S]*function\s+startTimer/.test(c) },
+            { desc: "Global timerInterval scope", pass: (c) => /let\s+timerInterval\s*(?:=\s*null\s*)?;[\s\S]*function\s+startTimer/.test(c) },
             { desc: "Comparison operator (=== 60)", pass: (c) => /if\s*\(\s*seconds\s*(===|==)\s*60\s*\)/.test(c) },
             { desc: "Prevent multiple intervals (if !timerInterval)", pass: (c) => /if\s*\(\s*!timerInterval\s*\)/.test(c) },
             { desc: "Reset interval state (timerInterval = null)", pass: (c) => /timerInterval\s*=\s*null\s*;/.test(c) }
@@ -546,7 +546,7 @@ const r3HtmlQuestions = [
 </body>
 </html>`,
         checks: [
-            { desc: "Submit listener on form element", pass: (c) => /document\.getElementById\(['"]signup-form['"]\)\.addEventListener\(['"]submit['"]/.test(c) },
+            { desc: "Submit listener on form element", pass: (c) => /form\.addEventListener\s*\(\s*['"]submit['"]/.test(c) || /document\.getElementById\(['"]signup-form['"]\)\.addEventListener\(['"]submit['"]/.test(c) },
             { desc: "Prevent default parentheses (e.preventDefault())", pass: (c) => /e\.preventDefault\(\)/.test(c) },
             { desc: "Compare input values (.value)", pass: (c) => /pass1\.value/.test(c) && /pass2\.value/.test(c) },
             { desc: "Non-match logic (!= or !==)", pass: (c) => /pass1\.value\s*(!==|!=)\s*pass2\.value/.test(c) },
@@ -596,7 +596,7 @@ int main() {
             { desc: "Use strlen() for length", pass: (c) => /int\s+len\s*=\s*strlen\s*\(\s*str\s*\)\s*;/.test(c) },
             { desc: "Allocate space for null terminator (+1)", pass: (c) => /malloc\s*\(\s*len\s*\+\s*1\s*\)/.test(c) },
             { desc: "Fix loop off-by-one (len - 1 - i)", pass: (c) => /reversed\s*\[\s*i\s*\]\s*=\s*str\s*\[\s*len\s*-\s*1\s*-\s*i\s*\]/.test(c) },
-            { desc: "Add manual null terminator (\\0)", pass: (c) => /reversed\s*\[\s*len\s*\]\s*=\s*['"]\\\\0['"]\s*;/.test(c) },
+            { desc: "Add manual null terminator (\\0)", pass: (c) => /reversed\s*\[\s*len\s*\]\s*=\s*['"]\\0['"]\s*;/.test(c) },
             { desc: "Free memory in main", pass: (c) => /free\s*\(\s*rev\s*\)\s*;/.test(c) }
         ]
     },
@@ -738,7 +738,7 @@ int main() {
         checks: [
             { desc: "Struct self-reference (struct Node*)", pass: (c) => /struct\s+Node\s*\*\s*next\s*;/.test(c) },
             { desc: "Correct malloc size (sizeof(Node))", pass: (c) => /malloc\s*\(\s*sizeof\s*\(\s*Node\s*\)\s*\)/.test(c) },
-            { desc: "Pass by reference (Node** head_ref)", pass: (c) => /void\s+push\s*\(\s*Node\s*\*\*\s*head_ref/.test(c) && /push\s*\(\s*&head\s*,/.test(c) },
+            { desc: "Pass by reference (Node** head_ref)", pass: (c) => /void\s+push\s*\(\s*Node\s*\*\*\s*\w+/.test(c) && /push\s*\(\s*&head\s*,/.test(c) },
             { desc: "List traversal logic (temp->next)", pass: (c) => /temp\s*=\s*temp\s*->\s*next\s*;/.test(c) },
             { desc: "Comprehensive free() loop", pass: (c) => /while\s*\(.*!=\s*NULL\s*\)[\s\S]*free/.test(c) }
         ]
@@ -785,7 +785,7 @@ int main() {
             { desc: "Array element count (sizeof/sizeof)", pass: (c) => /sizeof\s*\(\s*data\s*\)\s*\/\s*sizeof\s*\(\s*data\s*\[\s*0\s*\]\s*\)/.test(c) },
             { desc: "Pass array pointer correctly", pass: (c) => /sortArray\s*\(\s*data\s*,\s*size\s*\)\s*;/.test(c) },
             { desc: "Swap by reference (int* a, int* b)", pass: (c) => /void\s+swap\s*\(\s*int\s*\*\s*a\s*,\s*int\s*\*\s*b\s*\)/.test(c) && /swap\s*\(\s*&arr\s*\[\s*j\s*\]\s*,\s*&arr\s*\[\s*j\s*\+\s*1\s*\]\s*\)/.test(c) },
-            { desc: "Fix inner loop bounds (size - i - 1)", pass: (c) => /j\s*<\s*size\s*-\s*i\s*-\s*1/.test(c) },
+            { desc: "Fix inner loop bounds (size - i - 1 or size - 1)", pass: (c) => /j\s*<\s*size\s*-\s*([i1]\s*-\s*[i1]|1)/.test(c) },
             { desc: "Remove array address operator (&data)", pass: (c) => !/sortArray\s*\(\s*&data/.test(c) && /sortArray\s*\(\s*data\s*,/.test(c) }
         ]
     }
@@ -846,7 +846,7 @@ int main() {
         checks: [
             { desc: "Pass by reference (removeOutofStock)", pass: (c) => /void\s+removeOutofStock\s*\(\s*vector\s*<\s*GroceryItem\s*>\s*&\s*cart\s*\)/.test(c) },
             { desc: "Fix iterator invalidation (it = erase())", pass: (c) => /it\s*=\s*cart\.erase\s*\(\s*it\s*\)/.test(c) },
-            { desc: "Initialize total (double total = 0.0)", pass: (c) => /double\s+total\s*=\s*0\.0\s*;/.test(c) },
+            { desc: "Initialize total (double total = 0.0)", pass: (c) => /double\s+total\s*=\s*0(\.0)?\s*;/.test(c) },
             { desc: "Correct loop bounds (i < cart.size())", pass: (c) => /i\s*<\s*cart\.size\(\)/.test(c) },
             { desc: "Const string reference in constructor", pass: (c) => /GroceryItem\s*\(\s*const\s*string\s*&\s*n/.test(c) }
         ]
@@ -896,7 +896,7 @@ int main() {
             { desc: "Fix iterator invalidation (it = erase())", pass: (c) => /it\s*=\s*schedule\.erase\s*\(\s*it\s*\)/.test(c) },
             { desc: "Use empty() check (size_t underflow)", pass: (c) => /feedTimes\.empty\(\)/.test(c) },
             { desc: "Double portion calculation ((double)total/portions)", pass: (c) => /\(double\)\s*totalKibble\s*\/\s*portions/.test(c) || /totalKibble\s*\/\s*\(double\)\s*portions/.test(c) },
-            { desc: "Reference in range loop (int& time)", pass: (c) => /for\s*\(\s*int\s*&\s*time\s*:\s*feedTimes\s*\)/.test(c) }
+            { desc: "Reference in range loop (int& time)", pass: (c) => /for\s*\(\s*(int|auto)\s*&\s*time\s*:\s*feedTimes\s*\)/.test(c) }
         ]
     },
     {
@@ -1055,7 +1055,7 @@ int main() {
         checks: [
             { desc: "Fix premature loop termination (remove else)", pass: (c) => !/else\s*\{\s*return\s+false\s*;\s*\}/.test(c) && /return\s+true\s*;/.test(c) },
             { desc: "Use .back() for the last element", pass: (c) => /vipList\.back\(\)/.test(c) },
-            { desc: "Correct pointer assignment (&vipList.back())", pass: (c) => /string\s*\*\s*lastCar\s*=\s*&vipList\.back\(\)\s*;/.test(c) },
+            { desc: "Correct pointer assignment (&vipList.back())", pass: (c) => /string\s*\*\s*lastCar\s*=\s*&\s*vipList\s*\.\s*back\s*\(\s*\)\s*;/.test(c) },
             { desc: "Pass by constant reference (vector)", pass: (c) => /const\s*vector\s*<\s*string\s*>\s*&\s*vips/.test(c) },
             { desc: "Pass by constant reference (string)", pass: (c) => /const\s*string\s*&\s*plate/.test(c) }
         ]
@@ -1169,7 +1169,7 @@ function renderRound3Question() {
                     <button class="btn" style="padding: 2px 10px; font-size: 0.8rem; font-weight: bold;" onclick="zoomEditor(-1)">-</button>
                 </div>
             </div>
-            <textarea id="r3-code" class="round3-editor" style="font-size: ${GAME_STATE.editorFontSize}px;" oncopy="return false" onpaste="return false" oncut="return false" ondrop="return false" oncontextmenu="return false" spellcheck="false">${currentCode}</textarea>
+            <textarea id="r3-code" class="round3-editor" style="font-size: ${GAME_STATE.editorFontSize}px;" oncopy="return true" onpaste="return true" oncut="return true" ondrop="return true" oncontextmenu="return false" spellcheck="false">${currentCode}</textarea>
         </div>
         <div class="text-center"><button class="btn btn-primary" onclick="evaluateRound3Question()">SUBMIT_FIX</button></div>
     </div>`;
@@ -1189,7 +1189,13 @@ function evaluateRound3Question() {
         else if (GAME_STATE.attempts === 1) pts = 20;
         else if (GAME_STATE.attempts === 2) pts = 15;
         GAME_STATE.accScore += pts;
-        showAlert(`✅ Correct!\nMoving to next question...`, () => { progressRound3(); });
+        
+        // Check if it is the final question (Index 3 is the 4th question)
+        if (GAME_STATE.currentQuestionIdx >= 3) {
+            showAlert(`✅ Correct!\nChallenge Complete!`, () => { progressRound3(); });
+        } else {
+            showAlert(`✅ Correct!\nMoving to next question...`, () => { progressRound3(); });
+        }
     } else {
         GAME_STATE.attempts++;
         const left = 3 - GAME_STATE.attempts;
