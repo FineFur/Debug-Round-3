@@ -1192,17 +1192,17 @@ function evaluateRound3Question() {
         
         // Check if it is the final question (Index 3 is the 4th question)
         if (GAME_STATE.currentQuestionIdx >= 3) {
-            showAlert(`✅ Correct!\nChallenge Complete!`, () => { progressRound3(); });
+            showAlert(`Correct!\nChallenge Complete!`, () => { progressRound3(); });
         } else {
-            showAlert(`✅ Correct!\nMoving to next question...`, () => { progressRound3(); });
+            showAlert(`Correct!\nMoving to next question...`, () => { progressRound3(); });
         }
     } else {
         GAME_STATE.attempts++;
         const left = 3 - GAME_STATE.attempts;
         if (left <= 0) {
-            showAlert('❌ Incorrect. Out of attempts!\nMoving to next question.', () => { progressRound3(); });
+            showAlert('Incorrect. Out of attempts!\nMoving to next question.', () => { progressRound3(); });
         } else {
-            showAlert(`❌ Not all checks passed. ${left} attempt(s) left.`, () => { 
+            showAlert(`Not all checks passed. ${left} attempt(s) left.`, () => { 
                 const badge = document.getElementById('r3-attempts-badge');
                 if (badge) badge.textContent = `Attempts Left: ${left}`;
             });
