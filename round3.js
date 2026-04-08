@@ -37,7 +37,7 @@ const r3JavaQuestions = [
         langColor: "#f89820",
         desc: "OOP - Library Checkout System",
         title: "Library.java",
-        problem: "This program manages a simple library inventory. It allows adding books to an array and searching for a book by its title to check it out. However, the code is failing to compile and throwing runtime errors. Find the 5 bugs.",
+        problem: "This program manages a simple library inventory. It allows adding books to an array and searching for a book by its title to check it out. However, the code is failing to compile and throwing runtime errors. Find the bugs..",
         buggyCode:
 `class Book {
     private String title;
@@ -92,7 +92,7 @@ public class Library {
         langColor: "#f89820",
         desc: "Control Flow - E-Commerce Discount",
         title: "ShoppingCart.java",
-        problem: "A shopping cart calculates total prices and applies discounts based on membership tiers. It uses a custom exception for invalid quantities. Find the 5 bugs.",
+        problem: "A shopping cart calculates total prices and applies discounts based on membership tiers. It uses a custom exception for invalid quantities. Find the bugs..",
         buggyCode:
 `class InvalidQuantityException {
     public InvalidQuantityException(String message) {
@@ -151,7 +151,7 @@ public class ShoppingCart {
         langColor: "#f89820",
         desc: "Multithreading - Concurrent Bank Account",
         title: "BankTest.java",
-        problem: "A shared bank account is accessed by two threads simultaneously. The code is meant to be thread-safe but is failing. Find the 5 bugs.",
+        problem: "A shared bank account is accessed by two threads simultaneously. The code is meant to be thread-safe but is failing. Find the bugs..",
         buggyCode:
 `class BankAccount implements Runnable {
     private int balance = 1000;
@@ -209,7 +209,7 @@ public class BankTest {
         langColor: "#f89820",
         desc: "OOP - Smart Home Automation",
         title: "SmartHome.java",
-        problem: "A system manages different smart home devices using abstraction. The main method tries to iterate through an array of devices to turn them on, but it's broken. Find the 5 bugs.",
+        problem: "A system manages different smart home devices using abstraction. The main method tries to iterate through an array of devices to turn them on, but it's broken. Find the bugs..",
         buggyCode:
 `abstract class Device {
     protected String name;
@@ -263,7 +263,7 @@ public class SmartHome {
         langColor: "#f89820",
         desc: "Logic - Document Text Analyzer",
         title: "TextAnalyzer.java",
-        problem: "A utility script processes text, counts words, and extracts a sentence. Logic and exception errors are preventing it from working safely. Find the 5 bugs.",
+        problem: "A utility script processes text, counts words, and extracts a sentence. Logic and exception errors are preventing it from working safely. Find the bugs..",
         buggyCode:
 `public class TextAnalyzer {
     public static int countWords(String text) {
@@ -319,7 +319,7 @@ const r3HtmlQuestions = [
         langColor: "#E34F26",
         desc: "DOM - Interactive To-Do List",
         title: "todo.html",
-        problem: "A simple app allows users to type a task and add it to an unordered list. Clicking 'Add Task' should append it to the list and clear the input field. Find the 5 bugs.",
+        problem: "A simple app allows users to type a task and add it to an unordered list. Clicking 'Add Task' should append it to the list and clear the input field. Find the bugs..",
         buggyCode:
 `<!DOCTYPE html>
 <html>
@@ -369,7 +369,7 @@ const r3HtmlQuestions = [
         langColor: "#E34F26",
         desc: "Async - Weather Dashboard",
         title: "weather.html",
-        problem: "This script fetches weather data for a city using a mock API. It displays the temperature or logs an error. Find the 5 bugs.",
+        problem: "This script fetches weather data for a city using a mock API. It displays the temperature or logs an error. Find the bugs..",
         buggyCode:
 `<!DOCTYPE html>
 <html>
@@ -414,7 +414,7 @@ const r3HtmlQuestions = [
         langColor: "#E34F26",
         desc: "Timers - Digital Stopwatch",
         title: "stopwatch.html",
-        problem: "A standard stopwatch with Start and Stop buttons. The timer increments every second. Find the 5 bugs.",
+        problem: "A standard stopwatch with Start and Stop buttons. The timer increments every second. Find the bugs..",
         buggyCode:
 `<!DOCTYPE html>
 <html>
@@ -462,7 +462,7 @@ const r3HtmlQuestions = [
         langColor: "#E34F26",
         desc: "Forms - Registration Validation",
         title: "validation.html",
-        problem: "Validating a user form before it gets sent to the server. Find the 5 bugs.",
+        problem: "Validating a user form before it gets sent to the server. Find the bugs.",
         buggyCode:
 `<!DOCTYPE html>
 <html>
@@ -513,7 +513,7 @@ const r3HtmlQuestions = [
         langColor: "#E34F26",
         desc: "Forms - Password Matcher",
         title: "password.html",
-        problem: "A registration form requires matching passwords. Find the 5 bugs.",
+        problem: "A registration form requires matching passwords. Find the bugs.",
         buggyCode:
 `<!DOCTYPE html>
 <html>
@@ -562,7 +562,7 @@ const r3CQuestions = [
         langColor: "#00599C",
         desc: "Memory - String Reverser",
         title: "reverse.c",
-        problem: "A function is supposed to take a string, dynamically allocate memory for a reversed copy, and return it. However, it's corrupted or leaking memory. Find the 5 bugs.",
+        problem: "A function is supposed to take a string, dynamically allocate memory for a reversed copy, and return it. However, it's corrupted or leaking memory. Find the bugs.",
         buggyCode:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -606,7 +606,7 @@ int main() {
         langColor: "#00599C",
         desc: "Structs - Student Roster",
         title: "students.c",
-        problem: "A program manages student records using a struct. It attempts to initialize a student and calculate an average, but has errors. Find the 5 bugs.",
+        problem: "A program manages student records using a struct. It attempts to initialize a student and calculate an average, but has errors. Find the bugs.",
         buggyCode:
 `#include <stdio.h>
 #include <string.h>
@@ -655,7 +655,7 @@ int main() {
         langColor: "#00599C",
         desc: "Files - System Logger",
         title: "logger.c",
-        problem: "A utility function is meant to append log messages to a file. It clears the file and crashes on errors. Find the 5 bugs.",
+        problem: "A utility function is meant to append log messages to a file. It clears the file and crashes on errors. Find the bugs.",
         buggyCode:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -698,7 +698,7 @@ int main() {
         langColor: "#00599C",
         desc: "Pointers - Linked List Initializer",
         title: "linked_list.c",
-        problem: "A program attempts to build a singly linked list by inserting nodes at the head, but the logic is broken. Find the 5 bugs.",
+        problem: "A program attempts to build a singly linked list by inserting nodes at the head, but the logic is broken. Find the bugs.",
         buggyCode:
 `#include <stdio.h>
 #include <stdlib.h>
@@ -749,7 +749,7 @@ int main() {
         langColor: "#00599C",
         desc: "Logic - Bubble Sorter",
         title: "bubble_sort.c",
-        problem: "A bubble sort implementation compiles but doesn't sort and has out-of-bounds risks. Find the 5 bugs.",
+        problem: "A bubble sort implementation compiles but doesn't sort and has out-of-bounds risks. Find the bugs.",
         buggyCode:
 `#include <stdio.h>
 
@@ -798,7 +798,7 @@ const r3CppQuestions = [
         langColor: "#00427E",
         desc: "Memory - Grocery Cart Checkout",
         title: "grocery.cpp",
-        problem: "A self-checkout machine calculates the total price of your groceries and flags out-of-stock items, but it's wrong and crashes. Find the 5 bugs.",
+        problem: "A self-checkout machine calculates the total price of your groceries and flags out-of-stock items, but it's wrong and crashes. Find the bugs.",
         buggyCode:
 `#include <iostream>
 #include <vector>
@@ -857,7 +857,7 @@ int main() {
         langColor: "#00427E",
         desc: "Iterators - Smart Pet Feeder",
         title: "feeder.cpp",
-        problem: "An automatic pet feeder dispenses meals based on an array of scheduled hours, but the machine crashes when removing times. Find the 5 bugs.",
+        problem: "An automatic pet feeder dispenses meals based on an array of scheduled hours, but the machine crashes when removing times. Find the bugs.",
         buggyCode:
 `#include <iostream>
 #include <vector>
@@ -905,7 +905,7 @@ int main() {
         langColor: "#00427E",
         desc: "OOP - E-Book Library Manager",
         title: "library.cpp",
-        problem: "A digital library holds both standard E-Books and Audiobooks. Loop through the library to print the descriptions of all books. Find the 5 bugs.",
+        problem: "A digital library holds both standard E-Books and Audiobooks. Loop through the library to print the descriptions of all books. Find the bugs.",
         buggyCode:
 `#include <iostream>
 #include <string>
@@ -963,7 +963,7 @@ int main() {
         langColor: "#00427E",
         desc: "Memory - Fitness Tracker Daily Log",
         title: "fitness.cpp",
-        problem: "A fitness app tracks your daily step count for a specific number of days, but the step counts are astronomical and it crashes on exit. Find the 5 bugs.",
+        problem: "A fitness app tracks your daily step count for a specific number of days, but the step counts are astronomical and it crashes on exit. Find the bugs.",
         buggyCode:
 `#include <iostream>
 
@@ -1019,7 +1019,7 @@ int main() {
         langColor: "#00427E",
         desc: "Lists - Parking Garage Validator",
         title: "parking.cpp",
-        problem: "An automated gate checks a car's license plate against a list of VIP members, but fails to find plates after the first one. Find the 5 bugs.",
+        problem: "An automated gate checks a car's license plate against a list of VIP members, but fails to find plates after the first one. Find the bugs.",
         buggyCode:
 `#include <iostream>
 #include <vector>
@@ -1176,10 +1176,77 @@ function renderRound3Question() {
 
 }
 
+// --- Structural Validation ---
+function validateStructure(code, lang) {
+    let stripped = code
+        .replace(/<!--[\s\S]*?-->/g, "")
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/\/\/.*/g, "")
+        .replace(/(["'`])(?:(?!\1)[^\\]|\\.)*\1/g, "");
+
+    let stack = [];
+    let pairs = { ')': '(', '}': '{', ']': '[' };
+    for (let char of stripped) {
+        if (char === '(' || char === '{' || char === '[') {
+            stack.push(char);
+        } else if (char === ')' || char === '}' || char === ']') {
+            if (stack.length === 0 || stack.pop() !== pairs[char]) {
+                return {valid: false, msg: "Syntax Error: Unbalanced or unexpected bracket '" + char + "'"};
+            }
+        }
+    }
+    if (stack.length > 0) {
+        return {valid: false, msg: "Syntax Error: Unclosed bracket '" + stack.pop() + "'"};
+    }
+
+    if (lang === "C" || lang === "C++") {
+        if (!/#include\s*</.test(code)) {
+            return {valid: false, msg: "Structure Error: Missing header files (#include)"};
+        }
+        if (!/(int|void)\s+main\s*\(/.test(code)) {
+            return {valid: false, msg: "Structure Error: Missing main function"};
+        }
+    } else if (lang === "HTML/JS") {
+        if (!/<\s*html(\s|>)/i.test(code) || !/<\s*\/\s*html\s*>/i.test(code)) {
+            return {valid: false, msg: "Structure Error: Missing opening or closing <html> tag"};
+        }
+        if (!/<\s*body(\s|>)/i.test(code) || !/<\s*\/\s*body\s*>/i.test(code)) {
+            return {valid: false, msg: "Structure Error: Missing opening or closing <body> tag"};
+        }
+        let hasHead = /<\s*head(\s|>)/i.test(code);
+        let hasHeadClose = /<\s*\/\s*head\s*>/i.test(code);
+        if (hasHead !== hasHeadClose) {
+             return {valid: false, msg: "Structure Error: Unmatched <head> or </head> tag"};
+        }
+    } else if (lang === "Java") {
+        if (!/class\s+\w+/.test(code)) {
+            return {valid: false, msg: "Structure Error: Missing class definition"};
+        }
+    }
+    
+    return {valid: true};
+}
+
 function evaluateRound3Question() {
     const code = document.getElementById('r3-code').value;
     GAME_STATE.currentUserCode = code; // Save current state
     const q = GAME_STATE.activeQuestions[GAME_STATE.currentQuestionIdx];
+
+    const structCheck = validateStructure(code, q.lang);
+    if (!structCheck.valid) {
+        GAME_STATE.attempts++;
+        const left = 3 - GAME_STATE.attempts;
+        if (left <= 0) {
+            showAlert('❌ Maintain proper structure. Out of attempts!\\nMoving to next question.', () => { progressRound3(); });
+        } else {
+            showAlert('❌ Maintain proper structure. ' + left + ' attempt(s) left.', () => { 
+                const badge = document.getElementById('r3-attempts-badge');
+                if (badge) badge.textContent = `Attempts Left: ${left}`;
+            });
+        }
+        return;
+    }
+
     const results = q.checks.map(c => { try { return c.pass(code); } catch (e) { return false; } });
     const allPassed = results.every(r => r === true);
 
@@ -1293,3 +1360,7 @@ function closeCustomAlert() {
 }
 
 window.onload = init;
+
+
+
+
